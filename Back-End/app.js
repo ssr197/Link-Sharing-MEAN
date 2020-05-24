@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-require('dotenv/config');
+//require('dotenv/config');
 const app = express();
 app.use(bodyParser.json());
 app.use(express.json());
@@ -20,4 +20,4 @@ app.get('/', (req, res) => {
 });
 
 //Listening to the server
-app.listen(process.env.PORT);
+app.listen(3000);

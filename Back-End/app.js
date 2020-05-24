@@ -18,6 +18,5 @@ mongoose.connect(
 app.get('/', (req, res) => {
      res.send('This is Home');
 });
-
 //Listening to the server
 app.listen(3000);

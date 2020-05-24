@@ -1,25 +1,36 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import { CONNREFUSED } from 'dns';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiCallService {
+  private apiURL: string = 'http://localhost:3001/user/';
   allUserList = [{"firstName":"admin","lastName":"admin","userName":"admin","dateOfBirth":"1997-07-13","email":"admin@admin.com","password":"admin","id":1}];
   
-  constructor() { }
+  constructor(
+    private http: Http,
+  ) { }
 
   login(params){
-    var currUser = this.allUserList.find(tempUser => (tempUser.userName === params.emailOrUsername || tempUser.email === params.emailOrUsername));
-    if(currUser && currUser.password == params.password){
-      return currUser;
-    }
+    this.http.get(this.apiURL).subscribe(message => {
+        console.log(message);
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   signUp(newUser){
-    var id = this.allUserList[this.allUserList.length-1].id
-    newUser.id = id+1;
     delete newUser.confirmPassword;
-    this.allUserList.push(newUser);
+    this.http.post(this.apiURL, newUser).subscribe(message => {
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   checkEmail(email){

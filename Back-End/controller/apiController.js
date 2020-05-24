@@ -4,7 +4,6 @@ const fs = require('fs');
 
 const User = require('../models/userModel');
 
-
 var authUser = async function(req, res) {
      console.log("authUser");
      try {

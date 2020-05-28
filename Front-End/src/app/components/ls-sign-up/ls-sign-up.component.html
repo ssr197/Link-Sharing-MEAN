@@ -1,9 +1,12 @@
 <div class="row">
-  <app-ls-public-dashboard class="col-sm-7"></app-ls-public-dashboard>
+  <app-ls-public-dashboard class="col-sm-7" *ngIf="!profilePage"></app-ls-public-dashboard>
   <div class="col-sm-5 login-background pull-right">
-    <span class="heading-1">
+    <span class="heading-1" *ngIf="!profilePage">
         Sign Up
     </span>
+    <span class="heading-1" *ngIf="profilePage">
+      Profile
+  </span>
 
     <div class="col-md-12">
         <div class="input-class row">
@@ -43,15 +46,18 @@
         </div>
 
         <div class="submit-button">
-            <button class="btn btn-success login-btn full-lentgh" (click)="onSubmit()">
+            <button class="btn btn-success login-btn full-lentgh" (click)="onSubmit()" *ngIf="!profilePage">
                 Sign Up
             </button>
+            <button class="btn btn-success login-btn full-lentgh" (click)="onUpdate()" *ngIf="profilePage">
+              Update Profile
+          </button>
         </div>
-        <div class="pull-centre">
+        <div class="pull-centre" *ngIf="!profilePage">
             or
         </div>
 
-        <div class="sign-up-button">
+        <div class="sign-up-button"  *ngIf="!profilePage">
             <button class="btn btn-outline-success full-lentgh" (click)="navigateToLoginPage()">
               Login Here
             </button>

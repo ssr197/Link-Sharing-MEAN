@@ -23,7 +23,7 @@ export class AppComponent {
 
   @ViewChild('sidenav') sidenav;
   
-  isUser = false;
+  isUser:any;
   header: string;
   isFullscreen: boolean = false;
   collapseSidebar: boolean;
@@ -42,6 +42,10 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    var user = localStorage.getItem('user');
+    if(user){
+      this._localCommunicationService.setUser(user);
+    }
     this.pageTitleService.title.subscribe((val: string) => {
         this.header = val;
     });
@@ -50,11 +54,10 @@ export class AppComponent {
     });
 
     this._localCommunicationService.user.subscribe(message => {
-      if(!message){
-        this.isUser = false;
+      this.isUser = message;
+      if(!message){ 
         this.router.navigateByUrl('login');
       } else{
-        this.isUser = true;
         this.router.navigateByUrl('home');
       }
     })
@@ -98,5 +101,10 @@ export class AppComponent {
 
   onActivate(e, scrollContainer) {
       scrollContainer.scrollTop = 0;
+  }
+
+  logout(){
+    localStorage.removeItem('user');
+    this._localCommunicationService.setUser(null);
   }
 }

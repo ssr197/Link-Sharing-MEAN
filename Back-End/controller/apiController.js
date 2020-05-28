@@ -5,7 +5,6 @@ const fs = require('fs');
 const User = require('../models/userModel');
 
 var authUser = async function(req, res) {
-     console.log("authUser");
      try {
           let user = await User.find({userName : req.params.username});
           if(user[0].password === req.params.password){
@@ -36,7 +35,6 @@ var getOneUser = async function(req, res) {
      }
 };
 var createNewUser = async function(req, res) {
-     console.log("createNewUser");
      try {
           const {firstName, lastName, userName, dateOfBirth, email, password} = req.body;
           let user = {};

@@ -23,13 +23,20 @@ export class LsLoginComponent implements OnInit {
   }
 
   onSubmit(){
-    this.user = this._apiCallService.login({emailOrUsername: this.emailOrUsername, password:this.password});
-    this._localCommunicationService.setUser(this.user);
-  }
-
-  logout(){
-    this.user = {}
-    this._localCommunicationService.setUser(this.user);
+    this._apiCallService.login({emailOrUsername: this.emailOrUsername, password:this.password}).subscribe(response => {
+        if(response && response[0]){
+          delete response[0].password;
+          delete response[0]._id;
+          localStorage.setItem('user', JSON.stringify(response[0]));
+          this._localCommunicationService.setUser(response);
+        } else {
+          
+        }
+      },
+      (err) => {
+        console.log(err);
+      }
+    );
   }
 
   forgetPassword(){

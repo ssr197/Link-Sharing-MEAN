@@ -27,7 +27,7 @@
                         </div>
                     </div>
                     
-                    <div class="sidebar-container" *ngIf="!isUser">
+                    <div class="sidebar-container" *ngIf="!isUser ">
                         <div class="sidenav-scrollbar-container">
                             <nav menuToggleDirective class="navigation">
                                 <ul class="pv-nav">
@@ -167,7 +167,7 @@
                                                 <div class="icon-area align-self-start">
                                                     <i class="fa fa-power-off"></i>
                                                 </div>
-                                                <div class="icon-msg ml-2 mr-2"> <span class="align-self-start d-block "><a class="nav-item nav-link">Logout</a></span>
+                                                <div class="icon-msg ml-2 mr-2"> <span class="align-self-start d-block "><a class="nav-item nav-link" (click)="logout()">Logout</a></span>
                                                 </div>
                                             </a>
                                         </div>

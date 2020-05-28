@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
-import { ApiCallService } from '../../service/api-call.service'
+import { ApiCallService } from '../../service/api-call.service';
+import { LocalCommunicationService } from '../../service/local-communication.service'
 
 
 @Component({
@@ -10,6 +11,8 @@ import { ApiCallService } from '../../service/api-call.service'
 })
 export class LsSignUpComponent implements OnInit {
 
+  @Input() profilePage:boolean = false;
+  isEditProfile = false;
   passwordIsFilled:boolean = false;
   passwordMatch:boolean = false;
   user = {
@@ -24,7 +27,8 @@ export class LsSignUpComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private _apiCallService: ApiCallService
+    private _apiCallService: ApiCallService,
+    private _localCommunicationService: LocalCommunicationService
   ) { }
 
   ngOnInit() {
@@ -35,7 +39,12 @@ export class LsSignUpComponent implements OnInit {
   }
 
   onSubmit(){
-    this._apiCallService.signUp(this.user);
+    this._apiCallService.signUp(this.user).subscribe(response => {
+      delete response._id;
+      delete response.password;
+      localStorage.setItem('user', JSON.stringify(response[0]));
+      this._localCommunicationService.setUser(response);
+    })
   }
 
 }

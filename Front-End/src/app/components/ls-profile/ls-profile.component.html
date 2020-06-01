@@ -1,1 +1,131 @@
-<app-ls-sign-up [profilePage]="true"></app-ls-sign-up>
+<div class="col-sm-12 row">
+<!--    <div class="col-sm-4 profile-background">-->
+<!--        <nav>-->
+<!--            <a class="nav flex-column" data-toggle="tab" role="tab" (click)="switchForm('Profile')">Profile</a>-->
+<!--            <a class="nav flex-column" data-toggle="tab" role="tab" (click)="switchForm('Email')">Email</a>-->
+<!--            <a class="nav flex-column" data-toggle="tab"  role="tab" (click)="switchForm('Password')">Password</a>-->
+<!--        </nav>-->
+<!--    </div>-->
+    <div class="col-sm-4 profile-dashboard">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav flex-column" data-toggle="tab" role="tab" (click)="switchForm('Profile')">Profile</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav flex-column" data-toggle="tab" role="tab" (click)="switchForm('Email')">Email</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav flex-column" data-toggle="tab"  role="tab" (click)="switchForm('Password')">Password</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="col-sm-8 pull-right">
+        <div class="row" [ngClass]="{'show':activePage==='Profile', 'hide':activePage!=='Profile'}">
+            <div class="col-sm-12 login-background pull-right">
+        <span class="heading-1">
+            Profile
+        </span>
+                <div class="col-md-12">
+                    <div class="input-class row">
+                        <span class="col-sm-10 input-label"></span>
+                        <span class="col-sm-2 input-label"><a class="pull-right" (click)="editProfile()"><i class="fa fa-pencil"></i>Edit</a></span>
+                    </div>
+                    <div class="input-class row">
+                        <span class="col-sm-2 input-label">Name</span>
+                        <input class="ls-input col-sm-10" type="text" [(ngModel)]="user.firstName" [readonly]="!isEditProfile">
+                    </div>
+
+                    <div class="input-class row">
+                        <span class="col-sm-2 input-label">Last Name</span>
+                        <input class="ls-input col-sm-10" type="text" [(ngModel)]="user.lastName" [readonly]="!isEditProfile">
+                    </div>
+
+                    <div class="input-class row">
+                        <span class="col-sm-2 input-label">Username</span>
+                        <input class="ls-input col-sm-10" type="text" [(ngModel)]="user.userName" [readonly]="!isEditProfile">
+                    </div>
+
+                    <div class="input-class row">
+                        <span class="col-sm-2 input-label">Birth Date</span>
+                        <input class="ls-input col-sm-10" type="date" [(ngModel)]="user.dateOfBirth" [readonly]="!isEditProfile">
+                    </div>
+
+                    <div class="submit-button">
+                        <button [disabled]="!isEditProfile" class="btn btn-success login-btn full-lentgh" (click)="updateProfile()">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" [ngClass]="{'show':activePage==='Email', 'hide':activePage!=='Email'}">
+            <div class="col-sm-12 login-background pull-right">
+        <span class="heading-1">
+            Email
+        </span>
+                <div class="col-md-12">
+                    <div class="input-class row">
+                        <span class="col-sm-10 input-label"></span>
+                        <span class="col-sm-2 input-label"><a class="pull-right" (click)="editEmail()"><i class="fa fa-pencil"></i>Edit</a></span>
+                    </div>
+                    <div class="input-class row">
+                        <span class="col-sm-2 input-label">Name</span>
+                        <input class="ls-input col-sm-10" type="text" [(ngModel)]="user.email" [readonly]="!isEditEmail">
+                    </div>
+
+                    <div class="submit-button">
+                        <button [disabled]="!isEditEmail" class="btn btn-success login-btn full-lentgh" (click)="updateProfile()">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row" [ngClass]="{'show':activePage==='Password', 'hide':activePage!=='Password'}">
+            <div class="col-sm-12 login-background pull-right">
+        <span class="heading-1">
+            Password
+        </span>
+                <div class="col-md-12">
+                    <div class="input-class row">
+                        <span class="col-sm-10 input-label"></span>
+                    </div>
+                    <div class="input-class row">
+                        <span class="col-sm-3 input-label">Old Password</span>
+                        <input class="ls-input col-sm-9" type="text">
+                    </div>
+
+                    <div class="input-class row">
+                        <span class="col-sm-3 input-label">New Password</span>
+                        <input class="ls-input col-sm-9" type="text">
+                    </div>
+
+                    <div class="input-class row">
+                        <span class="col-sm-3 input-label">Confirm Password</span>
+                        <input class="ls-input col-sm-9" type="text">
+                    </div>
+
+                    <div class="submit-button">
+                        <button class="btn btn-success login-btn full-lentgh" (click)="updateProfile()">
+                            Update Password
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

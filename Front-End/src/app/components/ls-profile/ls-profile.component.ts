@@ -7,9 +7,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LsProfileComponent implements OnInit {
 
+  isEditProfile: Boolean = false;
+  isEditEmail: Boolean = false;
+  isEditPassword: Boolean = false;
+  user: any;
+  activePage: any;
+
   constructor() { }
 
   ngOnInit() {
+    this.user = JSON.parse(localStorage.getItem('user'));
+    this.user.dateOfBirth = this.user.dateOfBirth.split('T')[0];
+    this.switchForm('Profile');
   }
 
+  editProfile() {
+    this.isEditProfile = !this.isEditProfile;
+  }
+
+  editEmail() {
+    this.isEditEmail = !this.isEditEmail;
+  }
+
+  editPassword() {
+  this.isEditPassword = this.isEditPassword
+  }
+
+  switchForm(activePage) {
+    this.activePage = activePage;
+  }
 }

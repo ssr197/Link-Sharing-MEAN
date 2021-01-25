@@ -5,12 +5,7 @@ import { Subject, BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class LocalCommunicationService {
-  
-  public user: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+
 
   constructor() { }
-
-  setUser(params){
-    this.user.next(params);
-  }
 }

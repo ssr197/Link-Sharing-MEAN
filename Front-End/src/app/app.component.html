@@ -29,7 +29,6 @@
                 </div>
             </ng-sidebar>
             <section class="main-contents">
-                <app-page-spinner *ngIf="showLoader"></app-page-spinner>
                 <header class="main-header">
                     <div class="d-flex justify-content-between align-items-center pv-header-toolbar w-100">
                         <div class="h-100 d-flex align-items-center col-sm-6 col-md-6 col-lg-6 pl-0 pr-0">
@@ -153,6 +152,16 @@
                         </div>
                     </div>
                 </header>
+                <div class="pv-base-container" #scrollContainer>
+                    <div class="justify-content-between align-items-center page-info d-none-sm" [hidden]="!currentUser">
+                        <span class="navbar-brand">{{header}}</span>
+                        <div class="col-md-5 pull-right" *ngIf="showmarker">
+                        </div>
+                    </div>
+                    <div class="inner-container">
+                        <router-outlet (activate)="onActivate($event, scrollContainer)"></router-outlet>
+                    </div>
+                </div>
             </section>
         </div>
     </ng-sidebar-container>

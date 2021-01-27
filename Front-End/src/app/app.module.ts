@@ -8,12 +8,19 @@ import { SidebarModule } from 'ng-sidebar';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { routes } from './app-routing.module';
+import { NgxMyDatePickerModule } from 'ngx-mydatepicker';
 import { LocalCommunicationService } from './service/local-communication.service';
 import { MenuToggleModule } from './core/menu/menu-toggle.module';
 import { MenuItems } from './core/menu/menu-items/menu-items';
 import {HttpClientModule } from '@angular/common/http';
 import { PageSpinnerComponent } from './components/spinner/page-spinner/page-spinner.component';
 import { LsHomeComponent } from './components/ls-home/ls-home.component';
+import { ButtonComponent } from "./components/form/button/button.component"
+import { TextBoxComponent } from "./components/form/input/input.component";
+import { DynamicFieldDirective } from "./components/form/dynamic-field/dynamic-field.directive"
+import { DynamicFormComponent } from "./components/form/dynamic-form/dynamic-form.component";
+import { CreditCardComponent } from './components/credit-card/credit-card.component';
+import { DateComponent } from './components/form/date/date.component'
 
 
 @NgModule({
@@ -21,8 +28,16 @@ import { LsHomeComponent } from './components/ls-home/ls-home.component';
     AppComponent,
     PageSpinnerComponent,
     LsHomeComponent,
+    ButtonComponent,
+    TextBoxComponent,
+    DynamicFieldDirective,
+    DynamicFormComponent,
+    CreditCardComponent,
+    DateComponent,
   ],
   entryComponents: [
+    TextBoxComponent,
+    DateComponent
   ],
   imports: [
     BrowserModule,
@@ -38,6 +53,7 @@ import { LsHomeComponent } from './components/ls-home/ls-home.component';
     NgbAlertModule,
     HttpClientModule,
     NgbModule.forRoot(),
+    NgxMyDatePickerModule.forRoot()
   ],
   providers: [
      LocalCommunicationService,

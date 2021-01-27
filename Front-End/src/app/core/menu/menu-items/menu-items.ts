@@ -21,6 +21,13 @@ const MENUITEMS = [
     type: 'link',
     icon: 'md md-view-dashboard'
   },
+  {
+    state: 'credit-card-details',
+    name: 'Card',
+    type: 'link',
+    icon: 'fa fa-credit-card'
+  },
+
 ];
 
 const logOutItem = [];

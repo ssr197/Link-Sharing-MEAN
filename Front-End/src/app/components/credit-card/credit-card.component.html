@@ -1,0 +1,26 @@
+<div class=" col-md-12">
+    <div id="rx-fp-right" class="p-l-0">
+        <div class="card ">
+            <div class="card-body ">
+                <div class="pvfpContainer">
+                    <section id="tabs2 " class="card ">
+                        <div class="row ">
+                            <div class="col-xs-12 col-md-12 col-sm-12 nav-tabs-box">
+                                <nav>
+                                    <div class="nav nav-tabs nav-fill" id="nav-tab " role="tablist ">
+                                        <a class="nav-item nav-link active" id="nav-dstring-tab" data-toggle="tab" role="tab">Credit Card Details</a>
+                                    </div>
+                                </nav>
+                                <div class="tab-content" id="nav-tabContent ">
+                                    <div class="tab-pane fade show active" id="nav-dString">
+                                        <dynamic-form [fields]="fieldTemp" *ngIf="fieldTemp" (submit)="submit($event)" (change)="change($event)"></dynamic-form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

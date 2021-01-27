@@ -50,4 +50,8 @@ export class AppComponent {
     screenfull.toggle();
     this.isFullscreen = !this.isFullscreen;
   }
+
+  onActivate(e, scrollContainer) {
+    scrollContainer.scrollTop = 0;
+}
 }

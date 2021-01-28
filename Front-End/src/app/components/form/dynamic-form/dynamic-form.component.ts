@@ -24,10 +24,10 @@ export class DynamicFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.createControl();
-    // this.invalidForm = this.form.valid;
+    this.invalidForm = this.form.valid;
     // this.getFormData(this.form);
     // this.saveEmptyDataString();
-    // this.onChanges();
+    this.onChanges();
   }
 
   onSubmit(event: Event) {
@@ -59,12 +59,11 @@ export class DynamicFormComponent implements OnInit {
       if (field.type === "button" || field.type === "custom") return;
       const control = this.fb.control(
         field.defaultValue,
+        // Validators.required
         this.bindValidations(field.validations || []),
       );
-      // fbArray.push(control)
       group.addControl(field.fieldName, control);
     });
-    // ListUtils.pvFormObj.push(group.controls);
     return group;
   }
 
@@ -72,18 +71,21 @@ export class DynamicFormComponent implements OnInit {
     if (validations.length > 0) {
       const validList = [];
       validations.forEach(valid => {
-        validList.push(this.getValidators(valid.validator));
+        validList.push(this.getValidators(valid));
       });
       return Validators.compose(validList);
     }
     return null;
   }
 
-  getValidators(validator) {
-    if (validator === 'required') {
+  getValidators(valid) {
+    if(valid.validator === 'required') {
       return Validators.required;
-    } else {
-      return Validators.pattern(validator);
+    } else if(valid.validator === 'email'){
+      return Validators.email;
+    }
+    else if(valid.validator == 'pattern'){
+      return Validators.pattern(valid.pattern);
     }
   }
 

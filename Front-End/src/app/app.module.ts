@@ -37,7 +37,8 @@ import { DateComponent } from './components/form/date/date.component'
   ],
   entryComponents: [
     TextBoxComponent,
-    DateComponent
+    DateComponent,
+    ButtonComponent
   ],
   imports: [
     BrowserModule,

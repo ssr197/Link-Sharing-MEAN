@@ -19,14 +19,26 @@ export class LocalCommunicationService {
       "inputType": "text",
       "isMandatory": true,
       "mandatorySet": false,
-      "maxLength": 12,
+      "maxLength": 16,
       "otherProperties": {
          "readOnly":false
       },
       "isVisibleByDefault": true,
       "type": "input",
       "dataValue": "",
-      "validations": null
+      "validations": [
+        {
+          "name": "required",
+          "validator": "required",
+          "message": "Card Number is required"
+        },
+        {
+          "name": "pattern",
+          "validator": "pattern",
+          "pattern": "[0-9]*",
+          "message": "Card Number is not valid"
+        },
+      ]
     },
     {
       "displayCode": "Card Holder",
@@ -98,7 +110,7 @@ export class LocalCommunicationService {
       "className": "",
       "isConditional": false,
       "defaultValue": "",
-      "fieldWidth": 6,
+      "fieldWidth": 12,
       "helpText": "",
       "inputType": "number",
       "isMandatory": true,
@@ -112,5 +124,13 @@ export class LocalCommunicationService {
       "dataValue": "",
       "validations": null
     },
+    {
+      "displayCode": "Save",
+      "fieldId":"save",
+      "className": "",
+      "fieldWidth": 2,
+      "isVisibleByDefault": true,
+      "type": "button"
+  }
   ]
 }

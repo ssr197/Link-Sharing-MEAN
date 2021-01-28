@@ -15,4 +15,5 @@ export interface FieldConfig {
   value?: any;
   defaultValue?: any;
   validations?: Validator[];
+  isMandatory?:boolean;
 }

@@ -13,6 +13,7 @@ export class CreditCardComponent implements OnInit {
   constructor(
     private _localCommunicationService: LocalCommunicationService
   ) { }
+  
   ngOnInit(): void {
     this.fieldTemp = this._localCommunicationService.creditCardDetails;
   }
@@ -20,7 +21,7 @@ export class CreditCardComponent implements OnInit {
   submit(event){
   }
   
-  chhange(event){
+  change(event){
   }
 
 }
